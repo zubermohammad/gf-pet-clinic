@@ -2,10 +2,12 @@ package com.geekface.gfpetclinic.services.mapimpl;
 
 import com.geekface.gfpetclinic.domain.Pet;
 import com.geekface.gfpetclinic.services.CrudService;
+import com.geekface.gfpetclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
-public class PetMapService extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+@Service
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {
         return super.findById(id);
