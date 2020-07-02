@@ -1,10 +1,14 @@
 package com.geekface.gfpetclinic.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "pets")
 public class Pet extends BaseEntity{
@@ -26,43 +30,14 @@ public class Pet extends BaseEntity{
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     private Set<Visit> visits = new HashSet<>();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    @Builder
+    public Pet(Long id, String name, LocalDate birthDate, @NonNull Owner owner,
+               @NonNull PetType type, @NonNull Set<Visit> visits) {
+        super(id);
         this.name = name;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
         this.owner = owner;
-    }
-
-    public PetType getType() {
-        return type;
-    }
-
-    public void setType(PetType type) {
         this.type = type;
-    }
-
-    public Set<Visit> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(Set<Visit> visits) {
         this.visits = visits;
     }
 }

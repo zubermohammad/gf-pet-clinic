@@ -8,6 +8,8 @@ import com.geekface.gfpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
+
 @Component
 public class BootstrapData implements CommandLineRunner {
 
@@ -28,12 +30,20 @@ public class BootstrapData implements CommandLineRunner {
         zuber.setLastName("MOhammed");
         ownerService.save(zuber);
 
+        Owner robert = Owner.builder().firstName("Robert")
+                .lastName("Martin")
+                .address("5th Privet Drive")
+                .city("London")
+                .pets(new HashSet<>())
+                .build();
+        ownerService.save(robert);
+
         Owner jim = new Owner();
         jim.setFirstName("Jim");
         jim.setLastName("Carry");
         ownerService.save(jim);
 
-        System.out.println("Owners created: "+ ownerService.findAll());
+        System.out.println("Owners created: " + ownerService.findAll());
 
         Vet jill = new Vet();
         jill.setFirstName("Jill");
