@@ -1,12 +1,13 @@
 package com.geekface.gfpetclinic.services.mapimpl;
 
 import com.geekface.gfpetclinic.domain.Pet;
-import com.geekface.gfpetclinic.services.CrudService;
 import com.geekface.gfpetclinic.services.PetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
+@Profile({"default", "map"})
 public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {

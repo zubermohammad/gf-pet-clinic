@@ -1,13 +1,14 @@
 package com.geekface.gfpetclinic.services.mapimpl;
 
 import com.geekface.gfpetclinic.domain.Owner;
-import com.geekface.gfpetclinic.services.CrudService;
 import com.geekface.gfpetclinic.services.OwnerService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
     @Override
     public Owner findById(Long id) {
